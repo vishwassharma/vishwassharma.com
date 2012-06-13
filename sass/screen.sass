@@ -1,0 +1,59 @@
+@import compass
+@import normalize
+@import h5bp
+
+$ninesixty-columns : 12
+$base-font-size : 16px
+$base-line-height : 24px
+$white : white
+$black : black
+$blue : blue
+$color-orange : orange
+$yellow : yellow
+
+// shadow color
+$default-box-shadow-color : lighten($black, 80%)
+
++establish-baseline
+
++font-face("Poplar Std", font-files("poplarstd.otf"))
+// +font-face("Port sans", font-files("PortLligatSans-Regular.ttf"))
+
++h5bp-display
++h5bp-selection
++h5bp-base
++h5bp-links
++h5bp-typography
++h5bp-lists
++h5bp-embeds
++h5bp-figures
++h5bp-forms
++h5bp-tables
+
+// ==============================================================
+// Something that use defines
+// ==============================================================
+
+body
+  // background : image-url("bg.png")
+  font-family : "Port sans", sans-serif
+  
+h1
+  +adjust-font-size-to(48px)
+  font-family: "Jenna Sue"
+h2
+  +adjust-font-size-to(36px)
+h3
+  +adjust-font-size-to(24px)
+h4
+  +adjust-font-size-to(20px)
+h5
+  +adjust-font-size-to(18px)
+  
+
+// ==============================================================
+// Something that use defines
+// ==============================================================
++h5bp-helpers
++h5bp-chromeframe
++h5bp-media
