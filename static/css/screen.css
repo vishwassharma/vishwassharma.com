@@ -347,6 +347,11 @@ html > body {
   src: url('/fonts/poplarstd.otf') format('opentype');
 }
 
+@font-face {
+  font-family: "Port sans";
+  src: url('/fonts/PortLligatSans-Regular.ttf') format('truetype');
+}
+
 /* line 34, ../../../../../../../Ruby193/lib/ruby/gems/1.9.1/gems/compass-h5bp-0.0.5/stylesheets/h5bp/_normalize.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
   display: block;
@@ -666,7 +671,7 @@ body {
 h1 {
   font-size: 3em;
   line-height: 1.5em;
-  font-family: "Jenna Sue";
+  font-family: "Poplar Std";
 }
 
 /* line 44, ../../sass/screen.sass */
