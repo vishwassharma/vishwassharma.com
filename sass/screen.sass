@@ -7,7 +7,9 @@ $base-font-size : 16px
 $base-line-height : 24px
 $white : white
 $black : black
-$blue : blue
+$blue : #0a88d0
+$border-grey : #a79494
+$light-grey : #efefef
 $color-orange : orange
 $yellow : yellow
 
@@ -35,12 +37,13 @@ $default-box-shadow-color : lighten($black, 80%)
 // ==============================================================
 
 body
-  // background : image-url("bg.png")
+  background : image-url("bg-func.png") repeat-x
   font-family : "Port sans", sans-serif
   
 h1
   +adjust-font-size-to(48px)
   font-family: "Poplar Std"
+  
 h2
   +adjust-font-size-to(36px)
 h3
@@ -50,7 +53,34 @@ h4
 h5
   +adjust-font-size-to(18px)
   
-
+header
+  padding : 50px 20px 0px 20px
+  float : left
+  width : 100%
+  
+  #logohold
+    width : 36.5%
+    +clearfix
+  
+  #logo
+    display : block
+    padding : 0px 35px 0px 35px
+    float : left
+ 
+  h1
+    font-size : 122px
+    line-height : 122px
+    margin : 0px
+  
+  
+.boxed
+  // padding : 10px
+  border : 1px solid $border-grey
+  background-color : $light-grey
+  
+.blue
+  color : $blue
+  
 // ==============================================================
 // Something that use defines
 // ==============================================================
