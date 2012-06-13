@@ -7,9 +7,9 @@
 <head>
   <meta charset="utf-8">
 
-  <title>{% block title %}gae-flask-html5{% endblock %}</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <title>{% block title %}Vishwas Sharma{% endblock %}</title>
+  <meta name="description" content="My profile page">
+  <meta name="author" content="Vishwas Sharma">
 
   <!-- Mobile viewport optimized: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,9 +30,15 @@
 
 <body>
 
-  <div id="container">
+  <!-- <div id="container"> -->
     <header>
-      {% block header %}{% endblock %}
+      {% block header %}
+      <div>
+      	<h1 id="logo"><span class="black">Vishwas</span></h1>
+      	<h1 id="logo"><span class="blue boxed">Vishwas</span></h1>
+      </div>
+      	
+      {% endblock %}
     </header>
     <div id="main" role="main">
       {% block main %}{% endblock %}
@@ -40,7 +46,7 @@
     <footer>
       {% block footer %}{% endblock %}
     </footer>
-  </div> <!--! end of #container -->
+  <!-- </div> <!--! end of #container \--\> -->
 
   <a href="http://github.com/zachwill/gae-flask-html5">
     <img style="position: absolute; top: 0; right: 0; border: 0;"
