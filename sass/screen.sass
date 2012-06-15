@@ -1,10 +1,10 @@
+// @import compass
+// @import normalize
+// @import h5bp
 @import compass
-@import normalize
-@import h5bp
+@import compass_twitter_bootstrap
+@import compass_twitter_bootstrap_responsive
 
-$ninesixty-columns : 12
-$base-font-size : 16px
-$base-line-height : 24px
 $white : white
 $black : black
 $blue : #0a88d0
@@ -15,75 +15,64 @@ $yellow : yellow
 
 // shadow color
 $default-box-shadow-color : lighten($black, 80%)
-
-+establish-baseline
+// 
+// +establish-baseline
 
 +font-face("Poplar Std", font-files("poplarstd.otf"))
 +font-face("Port sans", font-files("PortLligatSans-Regular.ttf"))
 
-+h5bp-display
-+h5bp-selection
-+h5bp-base
-+h5bp-links
-+h5bp-typography
-+h5bp-lists
-+h5bp-embeds
-+h5bp-figures
-+h5bp-forms
-+h5bp-tables
+// +h5bp-display
+// +h5bp-selection
+// +h5bp-base
+// +h5bp-links
+// +h5bp-typography
+// +h5bp-lists
+// +h5bp-embeds
+// +h5bp-figures
+// +h5bp-forms
+// +h5bp-tables
 
 // ==============================================================
 // Something that use defines
 // ==============================================================
-
 body
   background : image-url("bg-func.png") repeat-x
-  font-family : "Port sans", sans-serif
-  
-h1
-  +adjust-font-size-to(48px)
-  font-family: "Poplar Std"
-  
-h2
-  +adjust-font-size-to(36px)
-h3
-  +adjust-font-size-to(24px)
-h4
-  +adjust-font-size-to(20px)
-h5
-  +adjust-font-size-to(18px)
-  
+
 header
-  padding : 50px 20px 0px 20px
-  float : left
-  width : 100%
+  margin-top : 40px
   
-  #logohold
-    width : 36.5%
-    +clearfix
-  
-  #logo
-    display : block
-    padding : 0px 35px 0px 35px
-    float : left
- 
   h1
-    font-size : 122px
-    line-height : 122px
-    margin : 0px
-  
-  
-.boxed
-  // padding : 10px
-  border : 1px solid $border-grey
-  background-color : $light-grey
-  
+    text-align: center
+    font-family : "Poplar Std", sans-serif
+    font-size: 9em
+    line-height : 1.1em
+
 .blue
   color : $blue
+
+
+#main
+  margin-top : 10px 
+
+#lettering
+  padding : 10px
+  p
+    font-family : "Poplar Std", sans-serif
+    font-size : 10em
+    line-height : 0.9em
+    
+
+.middle
+  +bootstrap-center-block
   
+#refillus
+  h2
+    color : $white
+    margin: 10px 0px 10px 10px
+
 // ==============================================================
 // Something that use defines
 // ==============================================================
-+h5bp-helpers
-+h5bp-chromeframe
-+h5bp-media
+// +h5bp-helpers
+// +h5bp-chromeframe
+// +h5bp-media

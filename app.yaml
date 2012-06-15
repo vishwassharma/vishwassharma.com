@@ -60,6 +60,10 @@ handlers:
   static_files: static/css/\1
   upload: static/css/(.*\.css)
 
+- url: /fonts/(.*\.(otf|ttf))
+  static_files: static/fonts/\1
+  upload: static/fonts/(.*\.(otf|ttf))
+
 - url: /js/(.*\.js)
   mime_type: text/javascript
   static_files: static/js/\1

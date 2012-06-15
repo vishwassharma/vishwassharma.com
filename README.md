@@ -9,3 +9,7 @@
 2. Compass h5bp plugin
 	
 		gem install compass-h5bp
+		
+3. Compass Twitter bootstrap plugin
+
+		gem install compass_twitter_bootstrap
