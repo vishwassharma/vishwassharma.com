@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load i18n future mezzanine_tags %}
+
+{% block meta_title %}{% trans "Search Results" %}{% endblock %}
+{% block title %}{% trans "Search Results" %}{% endblock %}
+
+{% block main %}
+<div class="timeline"></div>
+<section class="main">
+        <!-- first article -->
+    {% if results.paginator.count == 0 %}
+    <article style="margin-bottom: 20px" class="col-lg-11 col-md-11 col-sm-11 col-xs-12 with-arrow">
+        <section class="timestamp">
+            <div id="stamp">
+                <a class="hidden-xs" href="#"><span class="icon-search icon-large icon-light"></span></a>
+                <a class="visible-xs" href="#"><span class="icon-search icon-light"></span></a>
+            </div>
+        </section>
+        <div class="box">
+                <div class="intro">
+                    <h1>
+                        <a href="/">
+                            Could not found anything related to: {{ query }}
+                        </a>
+                    </h1>
+                </div>
+            <hr>
+            <div class="clearfix"></div>
+        </div>
+    </article>
+    {% else %}
+    <article style="margin-bottom: 20px" class="col-lg-11 col-md-11 col-sm-11 col-xs-12 with-arrow">
+        <section class="timestamp">
+            <div id="stamp">
+                <a class="hidden-xs" href="#"><span class="icon-search icon-large icon-light"></span></a>
+                <a class="visible-xs" href="#"><span class="icon-search icon-light"></span></a>
+            </div>
+        </section>
+        <div class="box">
+                <div class="intro">
+                    <h1>
+                        Total {{ results.paginator.count }} results found for your query: <span style="color: #e86f67">{{ query }}</span>
+                    </h1>
+                </div>
+                <div class="text">
+                    <p>Basic search result.. could not go into detail right now</p>
+                </div>
+            <hr>
+            <div class="clearfix"></div>
+        </div>
+    </article>
+    {% endif %}
+    <!-- first article -->
+    {% for result in results.object_list %}
+    <article style="margin-bottom: 20px" class="col-lg-11 col-md-11 col-sm-11 col-xs-12 with-arrow">
+        <section class="timestamp">
+            <div id="stamp">
+                <a class="hidden-xs" href="#"><span class="icon-circle icon-large icon-light"></span></a>
+                <a class="visible-xs" href="#"><span class="icon-circle icon-light"></span></a>
+            </div>
+        </section>
+        <div class="box">
+                <div class="intro">
+                    <h1>
+                        <a href="{{ result.get_absolute_url }}">
+                            {{ result }}
+                        </a>
+                    </h1>
+                </div>
+                <div class="text">
+                    {{ result.description|truncatewords_html:50|safe }}
+                </div>
+            <hr>
+            <div class="read-more">
+                <a href="{{ result.get_absolute_url }}">{% trans "Read More.." %}</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </article>
+    {% endfor %}
+    <!-- end of first article -->
+    <div class="clearfix"></div>
+</section>   
+{% endblock main %}

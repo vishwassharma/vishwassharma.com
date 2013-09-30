@@ -1,0 +1,278 @@
+{% extends "blog/blog_post_list.html" %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags %}
+
+{% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for blog_post as tags %}
+{% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ blog_post.description }}
+{% endmetablock %}{% endblock %}
+
+
+{% block main %}
+<div class="timeline"></div>
+{% if blog_post.choose_template == 1 %}
+{# without image template #}
+    <section class="main">
+        <!-- first article -->
+        <article class="col-lg-11 col-md-11 col-sm-11 col-xs-12 with-arrow">
+            <section class="timestamp">
+                <div id="stamp">
+                    <a class="hidden-xs" href="#"><span class="icon-flag icon-large icon-light"></span></a>
+                    <a class="visible-xs" href="#"><span class="icon-flag icon-light"></span></a>
+                    <div class="meta-time">
+                        <div class="date">{{ blog_post.publish_date|date:"d" }}</div>
+                        <div class="age">
+                            <div class="month">{{ blog_post.publish_date|date:"M" }}</div>
+                            <div class="year">{{ blog_post.publish_date.year }}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="box">
+                <div class="meta-data">
+                    <div class="author">
+                        <h4>#FakingNews</h4>
+                    </div>
+                    <ul class="categories">
+                        <li><a href="#"><i class="icon-bookmark"></i>Electronics</a></li>
+                        <li><a href="#"><i class="icon-bookmark"></i>Technology</a></li>
+                        <li><a href="#"><i class="icon-bookmark"></i>Yocto</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                    <div class="intro">
+                        {% editable blog_post.title %}
+                        <h1>
+                            <a href="{{ blog_post.get_absolute_url }}">
+                                {{ blog_post.title }}
+                            </a>
+                        </h1>
+                        {% endeditable %}
+                    </div>
+                    {% editable blog_post.content %}
+                    <div class="text">
+                        {{ blog_post.content|safe }}
+                    </div>
+                    {% endeditable %}
+                <hr>
+                <div class="clearfix"></div>
+            </div>
+        </article>
+        <!-- end of first article -->
+        <div class="clearfix"></div>
+    </section>    
+{% elif blog_post.choose_template == 2 %}
+{# with big image template #}
+    <section class="main">
+        <!-- first article -->
+        <article class="col-lg-11 col-md-11 col-sm-11 col-xs-12 with-arrow">
+            <section class="timestamp">
+                <div id="stamp">
+                    <a class="hidden-xs" href="#"><span class="icon-flag icon-large icon-light"></span></a>
+                    <a class="visible-xs" href="#"><span class="icon-flag icon-light"></span></a>
+                    <div class="meta-time">
+                        <div class="date">{{ blog_post.publish_date|date:"d" }}</div>
+                        <div class="age">
+                            <div class="month">{{ blog_post.publish_date|date:"M" }}</div>
+                            <div class="year">{{ blog_post.publish_date.year }}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="box">
+                {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+                <div class="fixed-img padding-bottom-20">
+                    <img src="{{ MEDIA_URL }}{{ blog_post.featured_image }}" alt="" class="img-responsive">
+                </div>
+                {% endif %}
+                <div class="meta-data">
+                    <div class="author">
+                        <h4>#FakingNews</h4>
+                    </div>
+                    <ul class="categories">
+                        <li><a href="#"><i class="icon-bookmark"></i>Electronics</a></li>
+                        <li><a href="#"><i class="icon-bookmark"></i>Technology</a></li>
+                        <li><a href="#"><i class="icon-bookmark"></i>Yocto</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                    <div class="intro">
+                        {% editable blog_post.title %}
+                        <h1>
+                            <a href="{{ blog_post.get_absolute_url }}">
+                                {{ blog_post.title }}
+                            </a>
+                        </h1>
+                        {% endeditable %}
+                    </div>
+                    {% editable blog_post.content %}
+                    <div class="text">
+                        {{ blog_post.content|safe }}
+                    </div>
+                    {% endeditable %}
+                <hr>
+                <div class="clearfix"></div>
+            </div>
+        </article>
+        <!-- end of first article -->
+        <div class="clearfix"></div>
+    </section>
+{# {% elif blog_post.choose_template == 3 %} #}
+{% elif blog_post.choose_template == 10 %}
+{# With side image template #}
+    <section class="main">
+        <!-- first article -->
+        <article class="col-lg-11 col-md-11 col-sm-11 col-xs-12 with-arrow">
+            <section class="timestamp">
+                <div id="stamp">
+                    <a class="hidden-xs" href="#"><span class="icon-flag icon-large icon-light"></span></a>
+                    <a class="visible-xs" href="#"><span class="icon-flag icon-light"></span></a>
+                    <div class="meta-time">
+                        <div class="date">{{ blog_post.publish_date|date:"d" }}</div>
+                        <div class="age">
+                            <div class="month">{{ blog_post.publish_date|date:"M" }}</div>
+                            <div class="year">{{ blog_post.publish_date.year }}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="box">
+                <div class="meta-data">
+                    <div class="author">
+                        <h4>#FakingNews</h4>
+                    </div>
+                    <ul class="categories">
+                        <li><a href="#"><i class="icon-bookmark"></i>Electronics</a></li>
+                        <li><a href="#"><i class="icon-bookmark"></i>Technology</a></li>
+                        <li><a href="#"><i class="icon-bookmark"></i>Yocto</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div style="width: 100%">
+                    {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+                    <div class="pull-left fixed-img col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <img src="{{ MEDIA_URL }}{{ blog_post.featured_image }}" alt="">
+                    </div>
+                    {% endif %}
+                    <div class="pull-left col-lg-6 col-md-6 col-sm-12">
+                        <div class="intro">
+                            {% editable blog_post.title %}
+                            <h1>
+                                <a href="{{ blog_post.get_absolute_url }}">
+                                    {{ blog_post.title }}
+                                </a>
+                            </h1>
+                            {% endeditable %}
+                        </div>
+                        {% editable blog_post.content %}
+                        <div class="text">
+                            {{ blog_post.content|safe }}
+                        </div>
+                        {% endeditable %}
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <hr>
+                <div class="clearfix"></div>
+            </div>
+        </article>
+        <!-- end of first article -->
+        <div class="clearfix"></div>
+    </section>
+{% elif blog_post.choose_template == 4 %}
+{# Tweet with comment template #}
+    <section class="main">
+        <!-- first article -->
+        <article class="col-lg-11 col-md-11 col-sm-11 col-xs-12 with-arrow">
+            <section class="timestamp">
+                <div id="stamp">
+                    <a class="hidden-xs" href="#"><span class="icon-flag icon-large icon-light"></span></a>
+                    <a class="visible-xs" href="#"><span class="icon-flag icon-light"></span></a>
+                    <div class="meta-time">
+                        <div class="date">{{ blog_post.publish_date|date:"d" }}</div>
+                        <div class="age">
+                            <div class="month">{{ blog_post.publish_date|date:"M" }}</div>
+                            <div class="year">{{ blog_post.publish_date.year }}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="box">
+                <div class="comment">
+                    <blockquote>
+                        {% editable blog_post.title %}
+                        <p>
+                            <a href="#">{{ blog_post.title }}</a>
+                            <br>
+                    <cite>Vishwas Sharma</cite></p>
+                        {% endeditable %}
+                    </blockquote>
+                </div>
+            </div>
+        </article>
+        <!-- end of first article -->
+        <div class="clearfix"></div>
+    </section>
+{% else %}
+    <section class="main">
+        <!-- first article -->
+        <article class="col-lg-11 col-md-11 col-sm-11 col-xs-12 with-arrow">
+            <section class="timestamp">
+                <div id="stamp">
+                    <a class="hidden-xs" href="#"><span class="icon-flag icon-large icon-light"></span></a>
+                    <a class="visible-xs" href="#"><span class="icon-flag icon-light"></span></a>
+                    <div class="meta-time">
+                        <div class="date">{{ blog_post.publish_date|date:"d" }}</div>
+                        <div class="age">
+                            <div class="month">{{ blog_post.publish_date|date:"M" }}</div>
+                            <div class="year">{{ blog_post.publish_date.year }}</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="box">
+                {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+                <div class="fixed-img padding-bottom-20">
+                    <img src="{{ MEDIA_URL }}{{ blog_post.featured_image }}" alt="" class="img-responsive">
+                </div>
+                {% endif %}
+                <div class="meta-data">
+                    <div class="author">
+                        <h4>#FakingNews</h4>
+                    </div>
+                    <ul class="categories">
+                        <li><a href="#"><i class="icon-bookmark"></i>Electronics</a></li>
+                        <li><a href="#"><i class="icon-bookmark"></i>Technology</a></li>
+                        <li><a href="#"><i class="icon-bookmark"></i>Yocto</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                    <div class="intro">
+                        {% editable blog_post.title %}
+                        <h1>
+                            <a href="{{ blog_post.get_absolute_url }}">
+                                {{ blog_post.title }}
+                            </a>
+                        </h1>
+                        {% endeditable %}
+                    </div>
+                    {% editable blog_post.content %}
+                    <div class="text">
+                        {{ blog_post.content|safe }}
+                    </div>
+                    {% endeditable %}
+                <hr>
+                <div class="clearfix"></div>
+            </div>
+        </article>
+        <!-- end of first article -->
+        <div class="clearfix"></div>
+    </section>
+{% endif %}
+
+{% endblock main %}

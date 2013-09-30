@@ -1,0 +1,15 @@
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+<div class="snap-drawers visible-xs">
+    <div class="snap-drawer snap-drawer-left">
+        <!-- search bar -->
+        {% search_form  "all" %}
+        <!-- end search bar -->
+        <!-- social icons -->
+        {% include "includes/social_icons.html" %}
+         <!-- navigation -->
+        {% block mobile_nav %}
+            {% page_menu "pages/nav/tree.html" %}
+        {% endblock mobile_nav %}
+    </div>
+    <div class="snap-drawer snap-drawer-right"></div>
+</div>

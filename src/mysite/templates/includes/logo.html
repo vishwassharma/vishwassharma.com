@@ -1,0 +1,12 @@
+<article class="logo">
+    {% if settings.SITE_TITLE %}
+        <h1>{{ settings.SITE_TITLE }}</h1>
+    {% else %}
+        <h1>No Title</h1>
+    {% endif %}
+    {% if settings.SITE_TAGLINE %}
+        <h2>{{ settings.SITE_TAGLINE }}</h2>
+    {% else %}
+        <h2>No Tagline</h2>
+    {% endif %}
+</article>

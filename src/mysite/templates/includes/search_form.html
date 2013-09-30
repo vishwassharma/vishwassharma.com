@@ -1,0 +1,9 @@
+{% load mezzanine_tags i18n future %}
+<article id="search-bar">
+    <form action="{% url "search" %}" id="searchbox">
+    <input type="text" placeholder="{% trans "Search for.." %}" name="q" value="{{ request.REQUEST.q }}">
+    <div class="search-icon">
+        <a href="javascript:{}" onclick="$('#searchbox').submit(); return false;"><span class="icon-search"></span></a>
+    </div>
+    </form>
+</article>

@@ -1,0 +1,112 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}> <!--<![endif]-->
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+        <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+        <meta name="description" content="{% block meta_description %}{% endblock %}">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link href="http://fonts.googleapis.com/css?family=Arvo|Lobster|Open+Sans" rel="stylesheet" type="text/css">
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{STATIC_URL}}styles/049374cd.main.css">
+        <script src="{{STATIC_URL}}scripts/vendor/f7f27360.modernizr.js"></script>
+        <style>
+            #exposeMask{
+                z-index: 0px;
+                visibility: hidden;
+            }
+        </style>
+        {% block extra_head %}{% endblock %}
+    </head>
+    <body id="{% block body_id %}body{% endblock %}">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        {% block slider_mobile %}
+            {% include "includes/mobile/drawer.html" %}
+        {% endblock slider_mobile %}
+
+        <div id="content-wrapper" class="content-wrapper">
+            <div class="header visible-xs">
+                <!-- logo -->
+                {% block logo_mobile %}
+                    {% include "includes/mobile/header.html" %}
+                {% endblock logo_mobile %}
+                <!-- end logo -->
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 hidden-xs" id="left-content">
+                <section class="nano">
+                    <section class="content">
+                        <!-- logo -->
+                        {% block logo %}
+                            {% include "includes/logo.html" %}
+                        {% endblock logo %}
+                        <!-- end logo -->
+                        
+                        <!-- navigation -->
+                        {% block navigation %}
+                            {% page_menu "pages/nav/tree.html" %}
+                        {% endblock navigation %}
+                        <!-- end navigation -->
+                        <!-- search bar -->
+                        {% search_form  "all" %}
+                        <!-- end search bar -->
+                        <!-- social icons -->
+                        {% block social_icons %}
+                            {% include "includes/social_icons.html" %}
+                        {% endblock social_icons %}
+                        <!-- end social icons -->
+                        <!-- Tweets -->
+                        <!-- <article id="tweets" class="widget">
+                            <header>
+                                <h3>Tweet</h3>
+                            </header>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>    
+                        </article> -->
+                        <!-- end tweets -->
+                        <!-- categries -->
+                        <!-- <article id="categries" class="widget">
+                            <header>
+                                <h3>Categories</h3>
+                            </header>
+                            <ul>
+                                <li><a href="#">Electronics</a></li>
+                                <li><a href="#">Computers</a></li>
+                                <li><a href="#">Mechanics</a></li>
+                            </ul>
+                        </article> -->
+                    </section>
+                </section>
+            </div><!-- left column ends -->
+            <!-- right column -->
+            <div class="col-lg-8 col-lg-offset-4 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-xs-12 clearfix" id="right-content">
+                {% block main %}{% endblock %}
+            </div>
+            <!-- footer -->
+            <!-- end footer -->
+            <!-- right column ends -->
+        </div>
+
+        {% include "includes/footer_scripts.html" %}
+        {% editable_loader %}
+</body>
+</html>
